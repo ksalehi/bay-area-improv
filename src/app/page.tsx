@@ -6,31 +6,37 @@ const SECTIONS = [
     title: "Theaters",
     description: "Venue options where you can host shows and see performances.",
     href: "/theaters",
+    image: "/bai_theaters.jpg",
   },
   {
     title: "Classes",
     description: "A database of classes available at different organizations.",
     href: "/classes",
+    image: "/bai_classes.jpg",
   },
   {
     title: "Shows",
     description: "A calendar of upcoming indie and house shows.",
     href: "/calendar",
+    image: "/bai_shows.jpg",
   },
   {
     title: "Jams",
     description: "Events where improvisers of all skill levels play together on stage.",
     href: "/jams",
+    image: "/bai_jams.jpg",
   },
   {
     title: "Teams",
     description: "A list of improv teams in the Bay Area.",
     href: "/teams",
+    image: "/bai_teams.jpg",
   },
   {
     title: "Teachers & Coaches",
     description: "Browse availability and background of improv coaches and teachers.",
     href: "/coaches",
+    image: "/bai_coaches.jpg",
   },
 ];
 
@@ -77,8 +83,14 @@ export default async function HomePage() {
                 href={section.href}
                 className="group rounded-xl border border-[#e8e3de] bg-white overflow-hidden hover:border-[#c05050] hover:shadow-sm transition-all"
               >
-                {/* Image placeholder */}
-                <div className="h-40 bg-[#f0ebe4]" />
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={section.image}
+                    alt={section.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <div className="px-4 py-3">
                   <h2 className="font-semibold text-[#1c1917] group-hover:text-[#c05050] transition-colors mb-1">
                     {section.title}
