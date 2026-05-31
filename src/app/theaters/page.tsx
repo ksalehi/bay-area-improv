@@ -23,9 +23,11 @@ export default async function TheatersPage() {
             >
               {/* Image */}
               {theater.imageUrl && (
-                <div className={`shrink-0 ${!imageLeft ? "sm:order-last" : ""}`}>
-                  <TheaterImage src={theater.imageUrl} alt={theater.name} />
-                </div>
+                <TheaterImage
+                  src={theater.imageUrl}
+                  alt={theater.name}
+                  className={`shrink-0 ${!imageLeft ? "sm:order-last" : ""}`}
+                />
               )}
 
               {/* Text */}
