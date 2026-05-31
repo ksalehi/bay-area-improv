@@ -66,5 +66,49 @@ export function eventStartTime(event: CalendarEvent): string | null {
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
-  }).toLowerCase().replace(":00", "");
+  }).toLowerCase().replace(/:00\s*/, "").replace(/\s+([ap]m)/, "$1");
+}
+
+export function toDayKey(date: Date): string {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
+
+export function getCalendarDays(year: number, month: number): Date[] {
+  const firstDay = new Date(year, month - 1, 1);
+  const lastDay = new Date(year, month, 0);
+  const days: Date[] = [];
+
+  for (let i = firstDay.getDay(); i > 0; i--) {
+    days.push(new Date(year, month - 1, 1 - i));
+  }
+  for (let d = 1; d <= lastDay.getDate(); d++) {
+    days.push(new Date(year, month - 1, d));
+  }
+  const tail = days.length % 7 === 0 ? 0 : 7 - (days.length % 7);
+  for (let d = 1; d <= tail; d++) {
+    days.push(new Date(year, month, d));
+  }
+
+  return days;
+}
+
+export function buildEventMap(events: CalendarEvent[]): Map<string, CalendarEvent[]> {
+  const map = new Map<string, CalendarEvent[]>();
+  const add = (key: string, event: CalendarEvent) => {
+    if (!map.has(key)) map.set(key, []);
+    map.get(key)!.push(event);
+  };
+  for (const event of events) {
+    if (event.start.date && event.end.date) {
+      const cursor = new Date(event.start.date + "T00:00:00");
+      const end = new Date(event.end.date + "T00:00:00");
+      while (cursor < end) {
+        add(toDayKey(cursor), event);
+        cursor.setDate(cursor.getDate() + 1);
+      }
+    } else {
+      add(toDayKey(localDate(event)), event);
+    }
+  }
+  return map;
 }
