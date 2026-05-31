@@ -14,6 +14,7 @@ const SECTIONS = [
     description: "A database of classes available at different organizations.",
     href: "/classes",
     image: "/bai_classes.jpg",
+    imagePosition: "object-top",
   },
   {
     title: "Shows",
@@ -26,18 +27,21 @@ const SECTIONS = [
     description: "Events where improvisers of all skill levels play together on stage.",
     href: "/jams",
     image: "/bai_jams.jpg",
+    imagePosition: "object-top",
   },
   {
     title: "Teams",
     description: "A list of improv teams in the Bay Area.",
     href: "/teams",
     image: "/bai_teams.jpg",
+    imagePosition: "object-[center_25%]",
   },
   {
     title: "Teachers & Coaches",
     description: "Browse availability and background of improv coaches and teachers.",
     href: "/coaches",
     image: "/bai_coaches.jpg",
+    imagePosition: "object-top",
   },
 ];
 
@@ -89,7 +93,7 @@ export default async function HomePage() {
                     src={section.image}
                     alt={section.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className={`object-cover group-hover:scale-105 transition-transform duration-300 ${section.imagePosition ?? "object-center"}`}
                   />
                 </div>
                 <div className="px-4 py-3">
