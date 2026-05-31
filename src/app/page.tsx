@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { fetchEvents, localDate, eventStartTime } from "@/lib/calendar";
+import { fetchEvents } from "@/lib/calendar";
+import UpcomingEvents from "@/components/UpcomingEvents";
 
 const SECTIONS = [
   {
@@ -102,55 +103,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Upcoming shows */}
-        {upcoming.length > 0 && (
-          <section className="pb-14">
-            <div className="flex items-baseline justify-between mb-6">
-              <h2 className="text-lg font-semibold text-[#1c1917]">Upcoming shows</h2>
-              <a href="/calendar" className="text-sm text-[#c05050] hover:underline">
-                Full calendar →
-              </a>
-            </div>
-            <div className="divide-y divide-[#e8e3de] rounded-xl border border-[#e8e3de] bg-white overflow-hidden">
-              {upcoming.map((event) => {
-                const date = localDate(event);
-                const time = eventStartTime(event);
-                return (
-                  <a
-                    key={event.id}
-                    href={event.htmlLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-5 px-5 py-4 hover:bg-[#fdf5f5] transition-colors group"
-                  >
-                    <div className="shrink-0 w-12 text-center pt-0.5">
-                      <div className="text-xs font-medium text-[#c05050] uppercase tracking-wide">
-                        {date.toLocaleDateString("en-US", { month: "short" })}
-                      </div>
-                      <div className="text-2xl font-semibold text-[#1c1917] leading-none">
-                        {date.getDate()}
-                      </div>
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-medium text-[#1c1917] group-hover:text-[#c05050] transition-colors leading-snug">
-                        {event.summary}
-                      </p>
-                      <p className="text-sm text-[#6b6560] mt-0.5">
-                        {[
-                          date.toLocaleDateString("en-US", { weekday: "long" }),
-                          time,
-                          event.location,
-                        ]
-                          .filter(Boolean)
-                          .join(" · ")}
-                      </p>
-                    </div>
-                  </a>
-                );
-              })}
-            </div>
-          </section>
-        )}
+        <UpcomingEvents events={upcoming} />
       </div>
     </div>
   );

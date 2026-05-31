@@ -37,6 +37,29 @@ export function localDate(event: CalendarEvent): Date {
   return new Date(y, m - 1, d);
 }
 
+export function extractUrl(html: string | undefined): string | null {
+  if (!html) return null;
+  const match = html.match(/https?:\/\/[^\s<>"']+/);
+  if (!match) return null;
+  return match[0].replace(/[.,;:!?)\]]+$/, ""); // strip trailing punctuation
+}
+
+export function stripHtml(html: string | undefined, removeUrl?: string | null): string {
+  if (!html) return "";
+  let text = html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, " ");
+  if (removeUrl) text = text.replace(removeUrl, "");
+  return text.replace(/\n{3,}/g, "\n\n").trim();
+}
+
 export function eventStartTime(event: CalendarEvent): string | null {
   if (!event.start.dateTime) return null;
   return new Date(event.start.dateTime).toLocaleTimeString("en-US", {
