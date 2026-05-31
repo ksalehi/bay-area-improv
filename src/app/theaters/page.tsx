@@ -1,4 +1,5 @@
 import { fetchTheaters, mapsUrl } from "@/lib/theaters";
+import TheaterImage from "@/components/TheaterImage";
 
 export const metadata = { title: "Theaters — Bay Area Improv" };
 
@@ -23,12 +24,7 @@ export default async function TheatersPage() {
               {/* Image */}
               {theater.imageUrl && (
                 <div className={`shrink-0 ${!imageLeft ? "sm:order-last" : ""}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={theater.imageUrl}
-                    alt={theater.name}
-                    className="rounded-xl max-w-full max-h-32"
-                  />
+                  <TheaterImage src={theater.imageUrl} alt={theater.name} />
                 </div>
               )}
 
