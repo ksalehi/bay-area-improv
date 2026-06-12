@@ -14,9 +14,7 @@ export default async function TheatersPage() {
       </p>
 
       <div className="divide-y divide-[#e8e3de]">
-        {theaters.map((theater, i) => {
-          const imageLeft = i % 2 === 0;
-          return (
+        {theaters.map((theater) => (
             <div
               key={theater.name}
               className="flex flex-col sm:flex-row gap-8 py-12 first:pt-0 last:pb-0"
@@ -26,7 +24,7 @@ export default async function TheatersPage() {
                 <TheaterImage
                   src={theater.imageUrl}
                   alt={theater.name}
-                  className={`shrink-0 ${!imageLeft ? "sm:order-last" : ""}`}
+                  className="shrink-0"
                 />
               )}
 
@@ -74,8 +72,7 @@ export default async function TheatersPage() {
                 </div>
               </div>
             </div>
-          );
-        })}
+        ))}
       </div>
     </main>
   );
