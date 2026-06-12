@@ -14,12 +14,12 @@ export default function TheaterImage({
   const [failed, setFailed] = useState(false);
   if (failed) return null;
   return (
-    <div className={className}>
+    <div className={`w-32 ${className ?? ""}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt={alt}
-        className="rounded-xl max-w-full max-h-32"
+        className="rounded-xl w-full h-auto"
         onError={() => setFailed(true)}
       />
     </div>
