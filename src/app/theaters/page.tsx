@@ -30,9 +30,12 @@ export default async function TheatersPage() {
 
               {/* Text */}
               <div className="flex flex-col justify-center flex-1">
-                <h2 className="text-xl font-semibold text-[#1c1917] mb-3 leading-snug">
+                <h2 className="text-xl font-semibold text-[#1c1917] leading-snug">
                   {theater.name}
                 </h2>
+                {theater.city && (
+                  <p className="text-sm text-[#9c948e] mb-3 mt-0.5">{theater.city}, CA</p>
+                )}
                 {theater.blurb && (
                   <p className="text-sm text-[#44403c] leading-relaxed mb-5">
                     {theater.blurb}
