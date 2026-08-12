@@ -5,10 +5,12 @@ import { useState, useEffect, useRef } from "react";
 export default function TheaterImage({
   src,
   alt,
+  width = "w-32",
   className,
 }: {
   src: string;
   alt: string;
+  width?: string;
   className?: string;
 }) {
   const [failed, setFailed] = useState(false);
@@ -23,7 +25,7 @@ export default function TheaterImage({
 
   if (failed) return null;
   return (
-    <div className={`w-32 ${className ?? ""}`}>
+    <div className={`${width} ${className ?? ""}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         ref={imgRef}
