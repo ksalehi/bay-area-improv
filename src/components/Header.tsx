@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { label: "Classes", href: "/classes" },
   { label: "Teams", href: "/teams" },
   { label: "Coaches", href: "/coaches" },
-  { label: "Calendar", href: "/calendar" },
+  { label: "Shows", href: "/calendar" },
   { label: "About", href: "/about" },
 ];
 
@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-[#e8e3de] bg-white">
-      <div className="mx-auto max-w-4xl px-6 py-2 flex items-center justify-between gap-6">
+      <div className="mx-auto max-w-6xl px-6 py-2 flex items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3 text-lg text-[#1c1917] font-semibold tracking-tight hover:text-[#c05050] transition-colors shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/bai_logo.png" alt="" className="w-20 h-20 rounded-full" />

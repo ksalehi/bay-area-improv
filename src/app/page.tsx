@@ -37,8 +37,8 @@ const SECTIONS = [
     imagePosition: "object-[center_25%]",
   },
   {
-    title: "Teachers & Coaches",
-    description: "Browse availability and background of improv coaches and teachers.",
+    title: "Coaches",
+    description: "Browse availability and background of improv coaches.",
     href: "/coaches",
     image: "/bai_coaches.jpg",
     imagePosition: "object-top",
@@ -64,21 +64,21 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 px-6 text-center">
           <h1 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight mb-3 drop-shadow">
-            Bay Area Improv
+            See a show. Take a class. Find your stage.
           </h1>
           <p className="text-base sm:text-lg text-white/75 mb-8 max-w-md">
-            A community hub for everything from taking your first class to producing a show.
+            Your guide to the Bay Area&apos;s improv scene, from finding tonight&apos;s show to producing your own.
           </p>
           <a
             href="/calendar"
             className="bg-[#c05050] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#a83e3e] transition-colors"
           >
-            View calendar →
+            View shows →
           </a>
         </div>
       </section>
 
-      <div className="mx-auto max-w-4xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         {/* Section cards */}
         <section className="py-14">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -88,7 +88,7 @@ export default async function HomePage() {
                 href={section.href}
                 className="group rounded-xl border border-[#e8e3de] bg-white overflow-hidden hover:border-[#c05050] hover:shadow-sm transition-all"
               >
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-52 overflow-hidden">
                   <Image
                     src={section.image}
                     alt={section.title}
@@ -97,7 +97,7 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="px-4 py-3">
-                  <h2 className="font-semibold text-[#1c1917] group-hover:text-[#c05050] transition-colors mb-1">
+                  <h2 className="text-lg font-semibold text-[#1c1917] group-hover:text-[#c05050] transition-colors mb-1">
                     {section.title}
                   </h2>
                   <p className="text-sm text-[#6b6560] leading-snug">{section.description}</p>
