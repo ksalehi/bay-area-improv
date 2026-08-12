@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { fetchEvents } from "@/lib/calendar";
 import UpcomingEvents from "@/components/UpcomingEvents";
 
@@ -108,6 +109,16 @@ export default async function HomePage() {
         </section>
 
         <UpcomingEvents events={upcoming} />
+
+        <section className="py-14 text-center">
+          <p className="text-[#6b6560]">
+            Stay tuned for more features as we build out this site! Please{" "}
+            <Link href="/about" className="text-[#c05050] font-medium hover:text-[#a83e3e] transition-colors">
+              reach out
+            </Link>{" "}
+            if you want to get involved.
+          </p>
+        </section>
       </div>
     </div>
   );

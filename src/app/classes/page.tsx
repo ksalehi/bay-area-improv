@@ -1,5 +1,6 @@
 import { fetchClasses } from "@/lib/classes";
 import { Fragment } from "react";
+import Link from "next/link";
 
 export const metadata = { title: "Classes — Bay Area Improv" };
 
@@ -10,7 +11,11 @@ export default async function ClassesPage() {
     <main className="mx-auto max-w-4xl px-6 py-12">
       <h1 className="text-3xl font-semibold tracking-tight mb-1">Classes</h1>
       <p className="text-[#6b6560] mb-12">
-        Improv programs across the Bay Area, from drop-in sessions to full curriculum tracks.
+        A list of classes at a few theaters known for their teaching -- check out the{" "}
+        <Link href="/theaters" className="text-[#c05050] font-medium hover:text-[#a83e3e] transition-colors">
+          theaters page
+        </Link>{" "}
+        for more options!
       </p>
 
       <div className="divide-y divide-[#e8e3de]">
