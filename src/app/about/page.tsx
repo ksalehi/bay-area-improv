@@ -9,14 +9,14 @@ export default function AboutPage() {
 
       <div className="prose-sm text-[#44403c] leading-relaxed space-y-4 mb-16">
         <p>
-          This site is run by Kia Salehi and Dylan Ray. The improv community in the Bay Area is
-          made up of so many different organizations, and while they each have their own website
-          or social media presence, we wanted to create a place where all these overlapping
-          circles come together.
+          This site was created by Kia Salehi and run jointly with Dylan Ray. The improv community
+          in the Bay Area is made up of so many different organizations, and while many have their
+          own website or social media presence, we wanted to create a place where all these 
+          overlapping circles come together.
         </p>
         <p>
-          Our aim is to provide newcomers to the scene a jumping off point for getting involved,
-          and existing community members a central hub of information and publicity. If you have
+          Our aim is to provide one place where audiences can find upcoming shows, beginners can find a class,
+          and existing community members can find coaches, source teams, and publicize events. If you have
           any questions or feedback for us, please reach out! 
         </p>
       </div>
