@@ -16,7 +16,8 @@ export default function AboutPage() {
         </p>
         <p>
           Our aim is to provide newcomers to the scene a jumping off point for getting involved,
-          and existing community members a central hub of information and publicity.
+          and existing community members a central hub of information and publicity. If you have
+          any questions or feedback for us, please reach out! 
         </p>
       </div>
 

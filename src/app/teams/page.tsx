@@ -87,12 +87,14 @@ export default async function TeamsPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
-      <h1 className="text-3xl font-semibold tracking-tight mb-1">Teams</h1>
-      <p className="text-[#6b6560] mb-12">
-        A non-exhaustive list of Bay Area teams — more functionality coming soon!
-      </p>
+      <div className="max-w-xl mx-auto">
+        <h1 className="text-3xl font-semibold tracking-tight mb-1">Teams</h1>
+        <p className="text-[#6b6560] mb-12">
+          A non-exhaustive list of Bay Area teams — more functionality coming soon!
+        </p>
+      </div>
 
-      <div className="divide-y divide-[#e8e3de]">
+      <div className="max-w-xl mx-auto divide-y divide-[#e8e3de]">
         {teams.map((team, i) => (
           <div
             key={team.name}
@@ -159,12 +161,14 @@ export default async function TeamsPage() {
         ))}
       </div>
 
-      <div className="max-w-xl mt-16">
-        <h2 className="text-xl font-semibold text-[#1c1917] tracking-tight mb-1">
-          Want to list your team here or add more info?
-        </h2>
-        <p className="text-[#6b6560] mb-6">Let us know!</p>
-        <TeamSubmissionForm />
+      <div className="mt-20 py-16 w-screen ml-[50%] -translate-x-1/2 bg-white">
+        <div className="max-w-xl mx-auto px-6">
+          <h2 className="text-xl font-semibold text-[#1c1917] tracking-tight mb-1">
+            Want to list your team here or add more info?
+          </h2>
+          <p className="text-[#6b6560] mb-6">Let us know!</p>
+          <TeamSubmissionForm />
+        </div>
       </div>
     </main>
   );
