@@ -1,5 +1,6 @@
 import { fetchCoaches } from "@/lib/coaches";
 import CoachSubmissionForm from "@/components/CoachSubmissionForm";
+import CoachContactForm from "@/components/CoachContactForm";
 import TheaterImage from "@/components/TheaterImage";
 
 export const metadata = { title: "Coaches — Bay Area Improv" };
@@ -9,19 +10,21 @@ export default async function CoachesPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
-      <h1 className="text-3xl font-semibold tracking-tight mb-1">Coaches</h1>
-      <p className="text-[#6b6560] mb-12">
-        More information available soon as folks fill out the form below!
-      </p>
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-3xl font-semibold tracking-tight mb-1">Coaches</h1>
+        <p className="text-[#6b6560] mb-12">
+          More information available soon as folks fill out the form below!
+        </p>
+      </div>
 
-      <div className="divide-y divide-[#e8e3de]">
+      <div className="max-w-3xl mx-auto divide-y divide-[#e8e3de]">
         {coaches.map((coach) => (
           <div key={coach.name} className="flex gap-4 py-6 first:pt-0 last:pb-0">
             {coach.photoUrl && (
-              <TheaterImage src={coach.photoUrl} alt={coach.name} width="w-[120px]" className="shrink-0" />
+              <TheaterImage src={coach.photoUrl} alt={coach.name} width="w-[180px]" className="shrink-0" />
             )}
 
-            <div className="min-w-0">
+            <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <h2 className="text-base font-medium text-[#1c1917]">{coach.name}</h2>
                 {coach.pronouns && (
@@ -62,19 +65,23 @@ export default async function CoachesPage() {
               )}
 
               {coach.bio && (
-                <p className="text-sm text-[#44403c] leading-relaxed mt-2.5 max-w-2xl">{coach.bio}</p>
+                <p className="text-sm text-[#44403c] leading-relaxed mt-2.5 max-w-xl">{coach.bio}</p>
               )}
+
+              <CoachContactForm coachName={coach.name} />
             </div>
           </div>
         ))}
       </div>
 
-      <div className="max-w-xl mt-16">
-        <h2 className="text-xl font-semibold text-[#1c1917] tracking-tight mb-1">
-          Want to be listed as a coach?
-        </h2>
-        <p className="text-[#6b6560] mb-6">Let us know!</p>
-        <CoachSubmissionForm />
+      <div className="mt-20 py-16 w-screen ml-[50%] -translate-x-1/2 bg-white">
+        <div className="max-w-xl mx-auto px-6">
+          <h2 className="text-xl font-semibold text-[#1c1917] tracking-tight mb-1">
+            Want to be listed as a coach?
+          </h2>
+          <p className="text-[#6b6560] mb-6">Let us know!</p>
+          <CoachSubmissionForm />
+        </div>
       </div>
     </main>
   );
