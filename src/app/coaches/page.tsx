@@ -9,7 +9,7 @@ export default async function CoachesPage() {
   const coaches = await fetchCoaches();
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-12">
+    <main className="flex-1 flex flex-col mx-auto max-w-5xl w-full px-6 py-12">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-semibold tracking-tight mb-1">Coaches</h1>
         <p className="text-[#6b6560] mb-12">
@@ -74,8 +74,8 @@ export default async function CoachesPage() {
         ))}
       </div>
 
-      <div className="mt-20 py-16 w-screen ml-[50%] -translate-x-1/2 bg-white">
-        <div className="max-w-xl mx-auto px-6">
+      <div className="flex-1 flex flex-col justify-center mt-20 py-16 w-screen ml-[50%] -translate-x-1/2 bg-white">
+        <div className="max-w-xl mx-auto px-6 w-full">
           <h2 className="text-xl font-semibold text-[#1c1917] tracking-tight mb-1">
             Want to be listed as a coach?
           </h2>

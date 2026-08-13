@@ -109,7 +109,7 @@ export default function CoachSubmissionForm() {
           name="tags"
           type="text"
           className="px-3.5 py-2.5 rounded-lg border border-[#e8e3de] bg-white text-[#1c1917] text-sm placeholder:text-[#b8b0a8] focus:outline-none focus:border-[#c05050] transition-colors"
-          placeholder="Long form, Narrative, BIPOC, Queer-friendly, etc."
+          placeholder="Long-form, narrative, BIPOC, etc."
         />
       </div>
 
