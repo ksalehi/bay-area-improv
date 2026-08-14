@@ -9,7 +9,7 @@ export default function AboutPage() {
 
       <div className="prose-sm text-[#44403c] leading-relaxed space-y-4 mb-16">
         <p>
-          This site was created by Kia Salehi and run jointly with Dylan Ray. The improv community
+          This site was created by Kia Salehi and run jointly with Dylan Ray Garcia. The improv community
           in the Bay Area is made up of so many different organizations, and while many have their
           own website or social media presence, we wanted to create a place where all these 
           overlapping circles come together.

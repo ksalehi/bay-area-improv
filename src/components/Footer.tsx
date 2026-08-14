@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-[#e8e3de] bg-white mt-auto">
       <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-[#9c948e]">
-        <p>{`© ${new Date().getFullYear()} Bay Area Improv.`}</p>
+        <p>{`© ${new Date().getFullYear()} Bay Area Improv`}</p>
         <div className="flex items-center gap-5">
           <Link href="/about" title="Get in touch" className="hover:text-[#c05050] transition-colors">
             <EnvelopeIcon className="w-5 h-5" />
