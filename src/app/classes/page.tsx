@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata = { title: "Classes — Bay Area Improv" };
 
 export default async function ClassesPage() {
-  const groups = await fetchClasses();
+  const groups = await fetchClasses(); // get data from spreadsheet
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
