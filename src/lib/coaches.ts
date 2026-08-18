@@ -42,11 +42,26 @@ function splitTags(cell: string): string[] {
     .filter(Boolean);
 }
 
-export async function fetchCoaches(): Promise<Coach[]> {
-  const res = await fetch(SHEET_CSV_URL, { next: { revalidate: 3600 } });
-  if (!res.ok) return [];
+async function fetchCsv(url: string, retries = 2): Promise<string> {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      // no-store: a failed/rate-limited response must never be cached as if it
+      // were good data — that's what left production stuck showing zero coaches
+      // until a redeploy. Retries below ride out transient blips instead.
+      const res = await fetch(url, { cache: "no-store" });
+      if (res.ok) return res.text();
+      if (attempt >= retries) {
+        throw new Error(`Coaches sheet fetch failed: ${res.status} ${res.statusText}`);
+      }
+    } catch (err) {
+      if (attempt >= retries) throw err;
+    }
+    await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));
+  }
+}
 
-  const csv = await res.text();
+export async function fetchCoaches(): Promise<Coach[]> {
+  const csv = await fetchCsv(SHEET_CSV_URL);
   const { data } = Papa.parse<string[]>(csv, { skipEmptyLines: true });
 
   const [header, ...rows] = data;

@@ -4,6 +4,7 @@ import CoachContactForm from "@/components/CoachContactForm";
 import TheaterImage from "@/components/TheaterImage";
 
 export const metadata = { title: "Coaches — Bay Area Improv" };
+export const revalidate = 3600;
 
 export default async function CoachesPage() {
   const coaches = await fetchCoaches();

@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 
 export const metadata = { title: "Classes — Bay Area Improv" };
+export const revalidate = 3600;
 
 export default async function ClassesPage() {
   const groups = await fetchClasses(); // get data from spreadsheet
