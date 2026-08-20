@@ -10,7 +10,7 @@ export default async function CoachesPage() {
   const coaches = await fetchCoaches();
 
   return (
-    <main className="flex-1 flex flex-col mx-auto max-w-5xl w-full px-6 py-12">
+    <main className="mx-auto max-w-4xl px-6 py-12">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-semibold tracking-tight mb-1">Coaches</h1>
         <p className="text-[#6b6560] mb-12">
