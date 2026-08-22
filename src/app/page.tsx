@@ -25,7 +25,7 @@ const SECTIONS = [
   },
   {
     title: "Festivals",
-    description: "All the festivals in the area",
+    description: "A roundup of festivals happening throughout the year.",
     href: "/festivals",
     image: "/bai_festivals.jpg",
     imagePosition: "object-top",
