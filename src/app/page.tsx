@@ -70,18 +70,26 @@ export default async function HomePage() {
           <p className="text-base sm:text-lg text-white/75 mb-8 max-2w-md">
             Whether you're watching, learning, or performing -- it's all here.
           </p>
-          <a
-            href="/calendar"
-            className="bg-[#c05050] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#a83e3e] transition-colors"
-          >
-            View shows →
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="#sections"
+              className="bg-white/10 text-white border border-white/40 px-6 py-2.5 rounded-full text-sm font-medium hover:bg-white/20 transition-colors backdrop-blur-sm"
+            >
+              Explore the guide
+            </a>
+            <a
+              href="/calendar"
+              className="bg-[#c05050] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#a83e3e] transition-colors"
+            >
+              See a show →
+            </a>
+          </div>
         </div>
       </section>
 
       <div className="mx-auto max-w-6xl px-6">
         {/* Section cards */}
-        <section className="py-14">
+        <section id="sections" className="py-14 scroll-mt-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SECTIONS.map((section) => (
               <a
