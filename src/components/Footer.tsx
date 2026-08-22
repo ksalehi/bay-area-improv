@@ -22,6 +22,15 @@ function InstagramIcon({ className }: { className?: string }) {
 export default function Footer() {
   return (
     <footer className="border-t border-[#e8e3de] bg-white mt-auto">
+      <div className="mx-auto max-w-6xl px-6 pt-8 text-center text-sm text-[#6b6560]">
+        <p>
+          Stay tuned for more features as we build out this site! Please{" "}
+          <Link href="/about" className="text-[#c05050] font-medium hover:text-[#a83e3e] transition-colors">
+            reach out
+          </Link>{" "}
+          if you want to get involved.
+        </p>
+      </div>
       <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-[#9c948e]">
         <p>{`© ${new Date().getFullYear()} Bay Area Improv`}</p>
         <div className="flex items-center gap-5">
