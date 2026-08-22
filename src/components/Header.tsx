@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "Classes", href: "/classes" },
   { label: "Teams", href: "/teams" },
   { label: "Coaches", href: "/coaches" },
+  { label: "Festivals", href: "/festivals" },
   { label: "Shows", href: "/calendar" },
   { label: "About", href: "/about" },
 ];
