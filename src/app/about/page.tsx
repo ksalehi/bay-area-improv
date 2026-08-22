@@ -8,11 +8,12 @@ export default function AboutPage() {
     <main className="mx-auto max-w-2xl px-6 py-12">
       <h1 className="text-3xl font-semibold tracking-tight mb-8">About</h1>
 
-      <div className="sm:float-right sm:ml-8 mb-6 sm:mb-2 relative h-80 w-56 max-w-full mx-auto sm:mx-0 overflow-hidden rounded-xl">
+      <div className="sm:float-right sm:ml-8 mb-6 sm:mb-2 relative h-64 w-full sm:w-64 overflow-hidden rounded-xl">
         <Image
           src="/bai_about.jpg"
           alt="Bay Area improv community"
           fill
+          loading="eager"
           className="object-cover"
         />
       </div>
