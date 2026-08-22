@@ -86,7 +86,7 @@ export default async function TeamsPage() {
   const teams = await fetchTeams();
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-12">
+    <main className="mx-auto max-w-5xl px-6 pt-12">
       <div className="max-w-xl mx-auto">
         <h1 className="text-3xl font-semibold tracking-tight mb-1">Teams</h1>
         <p className="text-[#6b6560] mb-12">

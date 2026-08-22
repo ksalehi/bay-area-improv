@@ -1,5 +1,4 @@
 import { fetchCoaches } from "@/lib/coaches";
-import CoachSubmissionForm from "@/components/CoachSubmissionForm";
 import CoachContactForm from "@/components/CoachContactForm";
 import TheaterImage from "@/components/TheaterImage";
 
@@ -10,7 +9,7 @@ export default async function CoachesPage() {
   const coaches = await fetchCoaches();
 
   return (
-    <main className="mx-auto max-w-4xl px-6 py-12">
+    <main className="mx-auto max-w-4xl px-6 pt-12">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-semibold tracking-tight mb-1">Coaches</h1>
         <p className="text-[#6b6560] mb-12">
@@ -81,7 +80,14 @@ export default async function CoachesPage() {
             Want to be listed as a coach?
           </h2>
           <p className="text-[#6b6560] mb-6">Let us know!</p>
-          <CoachSubmissionForm />
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeKnoM6eO5UqC7tLiRshcQ1A0UrJHgo99dOB3AV923C6vytFg/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-sm font-medium px-5 py-2.5 rounded-full bg-[#c05050] text-white hover:bg-[#a83e3e] transition-colors"
+          >
+            Fill out the form
+          </a>
         </div>
       </div>
     </main>

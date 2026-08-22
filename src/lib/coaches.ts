@@ -82,7 +82,7 @@ export async function fetchCoaches(): Promise<Coach[]> {
         name,
         pronouns: row[pronounsCol]?.trim() || null,
         bio: row[bioCol]?.trim() || null,
-        specialties: splitTags(row[specialtiesCol] ?? ""),
+        specialties: splitTags(row[specialtiesCol] ?? "").map((tag) => tag.toLowerCase()),
         identifiers: splitTags(row[identifiersCol] ?? ""),
         available: row[availableCol]?.trim().toLowerCase() === "yes",
         years: row[yearsCol]?.trim() || null,

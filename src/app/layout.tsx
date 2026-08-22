@@ -8,7 +8,7 @@ const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bay Area Improv",
-  description: "Shows, jams, and events across the Bay Area improv community.",
+  description: "Shows, teams, and festivals across the Bay Area improv community.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

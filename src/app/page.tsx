@@ -24,10 +24,10 @@ const SECTIONS = [
     image: "/bai_shows.jpg",
   },
   {
-    title: "Jams",
-    description: "Events where improvisers of all skill levels play together on stage.",
-    href: "/jams",
-    image: "/bai_jams.jpg",
+    title: "Festivals",
+    description: "All the festivals in the area",
+    href: "/festivals",
+    image: "/bai_festivals.jpg",
     imagePosition: "object-top",
   },
   {
