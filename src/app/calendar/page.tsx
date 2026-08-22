@@ -7,16 +7,6 @@ function ViewToggle({ view }: { view: "month" | "list" }) {
   return (
     <div className="inline-flex rounded-lg border border-[#e8e3de] p-0.5 bg-[#f8f5f2]">
       <Link
-        href="/calendar?view=month"
-        className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-          view === "month"
-            ? "bg-white text-[#1c1917] shadow-sm"
-            : "text-[#6b6560] hover:text-[#1c1917]"
-        }`}
-      >
-        Month
-      </Link>
-      <Link
         href="/calendar?view=list"
         className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
           view === "list"
@@ -25,6 +15,16 @@ function ViewToggle({ view }: { view: "month" | "list" }) {
         }`}
       >
         List
+      </Link>
+      <Link
+        href="/calendar?view=month"
+        className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+          view === "month"
+            ? "bg-white text-[#1c1917] shadow-sm"
+            : "text-[#6b6560] hover:text-[#1c1917]"
+        }`}
+      >
+        Month
       </Link>
     </div>
   );
@@ -36,7 +36,7 @@ export default async function CalendarPage({
   searchParams: Promise<{ month?: string; view?: string }>;
 }) {
   const { month: monthParam, view: viewParam } = await searchParams;
-  const view = viewParam === "list" ? "list" : "month";
+  const view = viewParam === "month" ? "month" : "list";
 
   const now = new Date();
 
