@@ -65,10 +65,10 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 px-6 text-center">
           <h1 className="text-4xl sm:text-5xl font-semibold text-white tracking-tight mb-3 drop-shadow">
-            See a show. Take a class. Find your stage.
+            The Complete Bay Area Improv Guide
           </h1>
-          <p className="text-base sm:text-lg text-white/75 mb-8 max-w-md">
-            Your guide to the Bay Area&apos;s improv scene, from finding tonight&apos;s show to producing your own.
+          <p className="text-base sm:text-lg text-white/75 mb-8 max-2w-md">
+            Whether you're watching, learning, or performing -- it's all here.
           </p>
           <a
             href="/calendar"
