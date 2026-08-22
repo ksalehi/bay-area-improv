@@ -72,6 +72,7 @@ export async function fetchCoaches(): Promise<Coach[]> {
   const identifiersCol = columnIndex(header, "Identifiers");
   const availableCol = columnIndex(header, "Available");
   const yearsCol = columnIndex(header, "Years");
+  const liveCol = columnIndex(header, "Live");
   const photos = photoUrlsByName();
 
   return rows
@@ -85,9 +86,20 @@ export async function fetchCoaches(): Promise<Coach[]> {
         identifiers: splitTags(row[identifiersCol] ?? ""),
         available: row[availableCol]?.trim().toLowerCase() === "yes",
         years: row[yearsCol]?.trim() || null,
-        photoUrl: name ? photos.get(snakeCase(name)) : undefined,
+        photoUrl: (name ? photos.get(snakeCase(name)) : undefined) ?? photos.get("placeholder"),
+        live: row[liveCol]?.trim().toLowerCase() === "yes",
       };
     })
-    .filter((c) => c.name)
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .filter((c) => c.name && c.live)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(({ name, pronouns, bio, specialties, identifiers, available, years, photoUrl }) => ({
+      name,
+      pronouns,
+      bio,
+      specialties,
+      identifiers,
+      available,
+      years,
+      photoUrl,
+    }));
 }
