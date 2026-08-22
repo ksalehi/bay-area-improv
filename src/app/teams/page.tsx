@@ -86,82 +86,84 @@ export default async function TeamsPage() {
   const teams = await fetchTeams();
 
   return (
-    <main className="mx-auto max-w-5xl px-6 pt-12">
-      <div className="max-w-xl mx-auto">
-        <h1 className="text-3xl font-semibold tracking-tight mb-1">Teams</h1>
-        <p className="text-[#6b6560] mb-12">
-          A non-exhaustive list of Bay Area teams — more functionality coming soon!
-        </p>
-      </div>
+    <>
+      <main className="mx-auto max-w-5xl px-6 pt-12">
+        <div className="max-w-xl mx-auto">
+          <h1 className="text-3xl font-semibold tracking-tight mb-1">Teams</h1>
+          <p className="text-[#6b6560] mb-12">
+            A non-exhaustive list of Bay Area teams — more functionality coming soon!
+          </p>
+        </div>
 
-      <div className="max-w-xl mx-auto divide-y divide-[#e8e3de]">
-        {teams.map((team, i) => (
-          <div
-            key={team.name}
-            className="flex items-center justify-between gap-6 py-3 first:pt-0 last:pb-0"
-          >
-            <div className="min-w-0">
-              <h2 className="text-[0.9375rem] font-medium text-[#1c1917] truncate">
-                {team.name}
-              </h2>
-              {team.contactPerson && (
-                <p className="text-xs text-[#9c948e]">{team.contactPerson}</p>
-              )}
-            </div>
-
-            {(team.instagramUrl ||
-              team.tiktokUrl ||
-              team.facebookUrl ||
-              team.websiteUrl ||
-              team.ticketsUrl) && (
-              <div className="flex items-center gap-2.5 shrink-0">
-                {team.ticketsUrl && (
-                  <a
-                    href={team.ticketsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Tickets"
-                    className="hover:opacity-75 transition-opacity"
-                  >
-                    <TicketIcon maskId={`ticket-mask-${i}`} className="w-[18px] h-[18px]" />
-                  </a>
-                )}
-                {team.websiteUrl && (
-                  <a
-                    href={team.websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Website"
-                    className="text-[#4a7ec2] hover:opacity-75 transition-opacity"
-                  >
-                    <WebsiteIcon className="w-[18px] h-[18px]" />
-                  </a>
-                )}
-                {team.facebookUrl && (
-                  <a href={team.facebookUrl} target="_blank" rel="noopener noreferrer">
-                    <FacebookIcon className="w-[18px] h-[18px]" />
-                  </a>
-                )}
-                {team.tiktokUrl && (
-                  <a href={team.tiktokUrl} target="_blank" rel="noopener noreferrer">
-                    <TikTokIcon className="w-[18px] h-[18px]" />
-                  </a>
-                )}
-                {team.instagramUrl && (
-                  <a href={team.instagramUrl} target="_blank" rel="noopener noreferrer">
-                    <InstagramIcon
-                      gradientId={`ig-gradient-${team.instagramHandle}`}
-                      className="w-[18px] h-[18px]"
-                    />
-                  </a>
+        <div className="max-w-xl mx-auto divide-y divide-[#e8e3de]">
+          {teams.map((team, i) => (
+            <div
+              key={team.name}
+              className="flex items-center justify-between gap-6 py-3 first:pt-0 last:pb-0"
+            >
+              <div className="min-w-0">
+                <h2 className="text-[0.9375rem] font-medium text-[#1c1917] truncate">
+                  {team.name}
+                </h2>
+                {team.contactPerson && (
+                  <p className="text-xs text-[#9c948e]">{team.contactPerson}</p>
                 )}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
 
-      <div className="mt-20 py-16 w-screen ml-[50%] -translate-x-1/2 bg-white">
+              {(team.instagramUrl ||
+                team.tiktokUrl ||
+                team.facebookUrl ||
+                team.websiteUrl ||
+                team.ticketsUrl) && (
+                <div className="flex items-center gap-2.5 shrink-0">
+                  {team.ticketsUrl && (
+                    <a
+                      href={team.ticketsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Tickets"
+                      className="hover:opacity-75 transition-opacity"
+                    >
+                      <TicketIcon maskId={`ticket-mask-${i}`} className="w-[18px] h-[18px]" />
+                    </a>
+                  )}
+                  {team.websiteUrl && (
+                    <a
+                      href={team.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Website"
+                      className="text-[#4a7ec2] hover:opacity-75 transition-opacity"
+                    >
+                      <WebsiteIcon className="w-[18px] h-[18px]" />
+                    </a>
+                  )}
+                  {team.facebookUrl && (
+                    <a href={team.facebookUrl} target="_blank" rel="noopener noreferrer">
+                      <FacebookIcon className="w-[18px] h-[18px]" />
+                    </a>
+                  )}
+                  {team.tiktokUrl && (
+                    <a href={team.tiktokUrl} target="_blank" rel="noopener noreferrer">
+                      <TikTokIcon className="w-[18px] h-[18px]" />
+                    </a>
+                  )}
+                  {team.instagramUrl && (
+                    <a href={team.instagramUrl} target="_blank" rel="noopener noreferrer">
+                      <InstagramIcon
+                        gradientId={`ig-gradient-${team.instagramHandle}`}
+                        className="w-[18px] h-[18px]"
+                      />
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </main>
+
+      <div className="mt-20 py-16 bg-white">
         <div className="max-w-xl mx-auto px-6">
           <h2 className="text-xl font-semibold text-[#1c1917] tracking-tight mb-1">
             Want to list your team here or add more info?
@@ -170,6 +172,6 @@ export default async function TeamsPage() {
           <TeamSubmissionForm />
         </div>
       </div>
-    </main>
+    </>
   );
 }

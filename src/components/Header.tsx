@@ -21,7 +21,7 @@ export default function Header() {
       <div className="mx-auto max-w-6xl px-6 py-2 flex items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3 text-lg text-[#1c1917] font-semibold tracking-tight hover:text-[#c05050] transition-colors shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/bai_logo.png" alt="" className="w-20 h-20 rounded-full" />
+          <img src="/bai_logo.png" alt="" className="w-12 h-12 sm:w-20 sm:h-20 rounded-full" />
           Bay Area Improv
         </Link>
 

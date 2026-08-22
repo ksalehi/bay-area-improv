@@ -1,5 +1,4 @@
 import { fetchClasses } from "@/lib/classes";
-import { Fragment } from "react";
 import Link from "next/link";
 
 export const metadata = { title: "Classes — Bay Area Improv" };
@@ -26,59 +25,49 @@ export default async function ClassesPage() {
               {theater}
             </h2>
 
-            <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-8">
-              {classes.map((c, i) => {
-                const borderClass = i < classes.length - 1 ? "border-b border-[#e8e3de]" : "";
-                return (
-                  <Fragment key={c.name}>
-                    {/* Name + drop-in tag */}
-                    <div className={`flex items-center gap-2 min-w-0 py-2.5 ${borderClass}`}>
-                      <span className="text-[0.9375rem] font-medium text-[#1c1917] truncate">
-                        {c.name}
+            <div className="divide-y divide-[#e8e3de]">
+              {classes.map((c) => (
+                <div
+                  key={c.name}
+                  className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1.5 py-2.5"
+                >
+                  {/* Name + drop-in tag */}
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="text-[0.9375rem] font-medium text-[#1c1917] truncate">
+                      {c.name}
+                    </span>
+                    {c.isDropIn && (
+                      <span className="shrink-0 text-[0.6875rem] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#eef4f0] text-[#3d7a57] border border-[#c2dece]">
+                        Drop-in
                       </span>
-                      {c.isDropIn && (
-                        <span className="shrink-0 text-[0.6875rem] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#eef4f0] text-[#3d7a57] border border-[#c2dece]">
-                          Drop-in
-                        </span>
-                      )}
-                    </div>
+                    )}
+                  </div>
 
-                    {/* Format */}
-                    <div className={`flex items-center py-2.5 tabular-nums ${borderClass}`}>
-                      {c.format && (
-                        <span className="text-[0.8125rem] text-[#6b6560] whitespace-nowrap">
-                          {c.format}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Price */}
-                    <div className={`flex items-center py-2.5 tabular-nums ${borderClass}`}>
-                      {c.price && (
-                        <span className="text-[0.8125rem] font-medium text-[#44403c] whitespace-nowrap">
-                          {c.price}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Register link */}
-                    <div className={`flex items-center py-2.5 ${borderClass}`}>
-                      {c.link ? (
-                        <a
-                          href={c.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-medium px-3.5 py-1.5 rounded-full border border-[#e8e3de] text-[#6b6560] hover:border-[#c05050] hover:text-[#c05050] transition-colors whitespace-nowrap"
-                        >
-                          Register
-                        </a>
-                      ) : (
-                        <span className="w-[72px]" />
-                      )}
-                    </div>
-                  </Fragment>
-                );
-              })}
+                  {/* Format, price, register */}
+                  <div className="flex items-center gap-4 shrink-0">
+                    {c.format && (
+                      <span className="text-[0.8125rem] text-[#6b6560] whitespace-nowrap tabular-nums">
+                        {c.format}
+                      </span>
+                    )}
+                    {c.price && (
+                      <span className="text-[0.8125rem] font-medium text-[#44403c] whitespace-nowrap tabular-nums">
+                        {c.price}
+                      </span>
+                    )}
+                    {c.link && (
+                      <a
+                        href={c.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-medium px-3.5 py-1.5 rounded-full border border-[#e8e3de] text-[#6b6560] hover:border-[#c05050] hover:text-[#c05050] transition-colors whitespace-nowrap"
+                      >
+                        Register
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
         ))}
