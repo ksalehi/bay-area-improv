@@ -1,5 +1,6 @@
-import { fetchTheaters, mapsUrl } from "@/lib/theaters";
+import { fetchTheaters, mapsUrl, theaterSlug } from "@/lib/theaters";
 import TheaterImage from "@/components/TheaterImage";
+import ScrollToHash from "@/components/ScrollToHash";
 
 export const metadata = { title: "Theaters — Bay Area Improv" };
 
@@ -8,6 +9,7 @@ export default async function TheatersPage() {
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
+      <ScrollToHash />
       <h1 className="text-3xl font-semibold tracking-tight mb-1">Theaters</h1>
       <p className="text-[#6b6560] mb-12">
         Venues where you can take classes, host shows, and see performances across the Bay Area.
@@ -30,7 +32,10 @@ export default async function TheatersPage() {
 
               {/* Text */}
               <div className="flex flex-col justify-center flex-1">
-                <h2 className="text-xl font-semibold text-[#1c1917] leading-snug">
+                <h2
+                  id={theaterSlug(theater.name)}
+                  className="text-xl font-semibold text-[#1c1917] leading-snug scroll-mt-6"
+                >
                   {theater.name}
                 </h2>
                 {theater.city && (

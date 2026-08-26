@@ -49,6 +49,10 @@ export function mapsUrl(query: string): string {
   return `https://www.google.com/maps/search/?q=${encodeURIComponent(query)}`;
 }
 
+export function theaterSlug(name: string): string {
+  return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
 export async function fetchTheaters(): Promise<Theater[]> {
   const res = await fetch(SHEET_CSV_URL, { next: { revalidate: 3600 } });
   if (!res.ok) return [];
