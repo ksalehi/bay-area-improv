@@ -44,24 +44,31 @@ function normalizeUrl(url: string): string | null {
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
 // Dates come in as free text like "Aug 12-18, 2026" or "Aug 28" (no year) —
-// this pulls out the start day and infers a year when one isn't given, rolling
-// over to next year if that day has already passed.
-function parseFestivalDate(raw: string | null, reference: Date): Date | null {
+// this pulls out the start/end days and infers a year when one isn't given,
+// rolling over to next year if the (last) day has already passed.
+function parseFestivalDateRange(
+  raw: string | null,
+  reference: Date
+): { start: Date; end: Date } | null {
   if (!raw) return null;
-  const match = raw.match(/^([A-Za-z]+)\.?\s+(\d{1,2})(?:\s*-\s*\d{1,2})?(?:,?\s*(\d{4}))?/);
+  const match = raw.match(/^([A-Za-z]+)\.?\s+(\d{1,2})(?:\s*-\s*(\d{1,2}))?(?:,?\s*(\d{4}))?/);
   if (!match) return null;
 
   const monthIndex = MONTHS.indexOf(match[1].slice(0, 3).toLowerCase());
   if (monthIndex === -1) return null;
 
-  const day = Number(match[2]);
-  const year = match[3] ? Number(match[3]) : reference.getFullYear();
-  const date = new Date(year, monthIndex, day);
+  const startDay = Number(match[2]);
+  const endDay = match[3] ? Number(match[3]) : startDay;
+  const year = match[4] ? Number(match[4]) : reference.getFullYear();
 
-  if (!match[3] && date < reference) {
-    return new Date(year + 1, monthIndex, day);
+  let start = new Date(year, monthIndex, startDay);
+  let end = new Date(year, monthIndex, endDay);
+
+  if (!match[4] && end < reference) {
+    start = new Date(year + 1, monthIndex, startDay);
+    end = new Date(year + 1, monthIndex, endDay);
   }
-  return date;
+  return { start, end };
 }
 
 async function fetchCsv(url: string, retries = 2): Promise<string> {
@@ -94,6 +101,7 @@ export async function fetchFestivals(): Promise<Festival[]> {
   const dateCol = columnIndex(header, "Date");
   const photos = photoUrlsByName();
   const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
   return rows
     .map((row) => {
@@ -112,10 +120,10 @@ export async function fetchFestivals(): Promise<Festival[]> {
     })
     .filter((f) => f.name)
     .sort((a, b) => {
-      const dateA = parseFestivalDate(a.date, now);
-      const dateB = parseFestivalDate(b.date, now);
-      const rankA = dateA && dateA >= now ? dateA.getTime() : Infinity;
-      const rankB = dateB && dateB >= now ? dateB.getTime() : Infinity;
+      const rangeA = parseFestivalDateRange(a.date, today);
+      const rangeB = parseFestivalDateRange(b.date, today);
+      const rankA = rangeA && rangeA.end >= today ? rangeA.start.getTime() : Infinity;
+      const rankB = rangeB && rangeB.end >= today ? rangeB.start.getTime() : Infinity;
       if (rankA !== rankB) return rankA - rankB;
       return a.name.localeCompare(b.name);
     });
