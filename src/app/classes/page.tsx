@@ -41,6 +41,11 @@ export default async function ClassesPage() {
                         Drop-in
                       </span>
                     )}
+                    {c.isWorkshop && (
+                      <span className="shrink-0 text-[0.6875rem] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#f1eefc] text-[#6b4fa3] border border-[#d9d0f0]">
+                        Workshop
+                      </span>
+                    )}
                   </div>
 
                   {/* Format, price, register */}

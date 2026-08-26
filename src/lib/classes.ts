@@ -8,6 +8,7 @@ export interface ImprovClass {
   description: string;
   format: string;
   isDropIn: boolean;
+  isWorkshop: boolean;
 }
 
 export interface TheaterClasses {
@@ -58,6 +59,7 @@ export async function fetchClasses(): Promise<TheaterClasses[]> {
       description: row[4]?.trim() ?? "",
       format: row[5]?.trim() ?? "",
       isDropIn: /drop.?in|sampler/i.test(name),
+      isWorkshop: /workshop/i.test(name),
     };
 
     if (!byTheater.has(currentTheater)) byTheater.set(currentTheater, []);
