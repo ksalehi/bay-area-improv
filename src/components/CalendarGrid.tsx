@@ -42,7 +42,7 @@ export default function CalendarGrid({
         {/* Month navigation */}
         <div className="flex items-center justify-between mb-5">
           <Link
-            href={`/calendar?month=${shiftMonth(year, month, -1)}`}
+            href={`/calendar?view=month&month=${shiftMonth(year, month, -1)}`}
             className="text-sm text-[#6b6560] hover:text-[#c05050] transition-colors px-3 py-1.5 rounded-lg hover:bg-[#fdf5f5]"
           >
             ←
@@ -51,7 +51,7 @@ export default function CalendarGrid({
             {MONTH_NAMES[month - 1]} {year}
           </h2>
           <Link
-            href={`/calendar?month=${shiftMonth(year, month, 1)}`}
+            href={`/calendar?view=month&month=${shiftMonth(year, month, 1)}`}
             className="text-sm text-[#6b6560] hover:text-[#c05050] transition-colors px-3 py-1.5 rounded-lg hover:bg-[#fdf5f5]"
           >
             →
