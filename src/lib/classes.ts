@@ -68,5 +68,6 @@ export async function fetchClasses(): Promise<TheaterClasses[]> {
 
   return Array.from(byTheater.entries())
     .filter(([, classes]) => classes.length > 0)
-    .map(([theater, classes]) => ({ theater, classes }));
+    .map(([theater, classes]) => ({ theater, classes }))
+    .sort((a, b) => a.theater.localeCompare(b.theater));
 }

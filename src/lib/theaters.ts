@@ -72,5 +72,5 @@ export async function fetchTheaters(): Promise<Theater[]> {
       blurb: row[4] ?? "",
       imageUrl: firstImageUrl(row[5] ?? ""),
     };
-  }).filter((t) => t.name);
+  }).filter((t) => t.name).sort((a, b) => a.name.localeCompare(b.name));
 }
