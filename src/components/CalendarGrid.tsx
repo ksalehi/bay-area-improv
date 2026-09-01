@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { CalendarEvent, localDate, eventStartTime, toDayKey, getCalendarDays, buildEventMap } from "@/lib/calendar";
 import EventModal from "./EventModal";
+import DayEventsModal from "./DayEventsModal";
 
 const MONTH_NAMES = [
   "January","February","March","April","May","June",
@@ -31,6 +32,7 @@ export default function CalendarGrid({
   events: CalendarEvent[];
 }) {
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [selectedDay, setSelectedDay] = useState<Date | null>(null);
 
   const days = getCalendarDays(year, month);
   const eventMap = buildEventMap(events);
@@ -83,17 +85,19 @@ export default function CalendarGrid({
                 }`}
               >
                 {/* Day number */}
-                <div
-                  className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-medium mb-1 ${
+                <button
+                  onClick={() => dayEvents.length > 0 && setSelectedDay(day)}
+                  disabled={dayEvents.length === 0}
+                  className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-medium mb-1 transition-colors ${
                     isToday
                       ? "bg-[#c05050] text-white"
                       : isCurrentMonth
                       ? "text-[#1c1917]"
                       : "text-[#cac6c2]"
-                  }`}
+                  } ${dayEvents.length > 0 && !isToday ? "hover:bg-[#fdf0f0]" : ""}`}
                 >
                   {day.getDate()}
-                </div>
+                </button>
 
                 {/* Events */}
                 <div className="space-y-0.5">
@@ -114,7 +118,12 @@ export default function CalendarGrid({
                     );
                   })}
                   {dayEvents.length > 3 && (
-                    <p className="text-xs text-[#6b6560] px-1.5">+{dayEvents.length - 3} more</p>
+                    <button
+                      onClick={() => setSelectedDay(day)}
+                      className="w-full text-xs text-[#6b6560] hover:text-[#c05050] transition-colors px-1.5 text-left"
+                    >
+                      +{dayEvents.length - 3} more
+                    </button>
                   )}
                 </div>
               </div>
@@ -123,6 +132,15 @@ export default function CalendarGrid({
         </div>
       </div>
 
+      <DayEventsModal
+        date={selectedDay}
+        events={selectedDay ? eventMap.get(toDayKey(selectedDay)) ?? [] : []}
+        onClose={() => setSelectedDay(null)}
+        onSelectEvent={(event) => {
+          setSelectedDay(null);
+          setSelectedEvent(event);
+        }}
+      />
       <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
     </>
   );
